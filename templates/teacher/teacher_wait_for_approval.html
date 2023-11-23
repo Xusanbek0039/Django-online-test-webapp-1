@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+
+
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+  </style>
+  <body>
+    {% include "exam/navbar.html" %}
+
+      <div class="jumbotron" style="margin-top: 0px;
+        margin-bottom: 0px;">
+        <h1 class="display-4">Assalomm alekum {{request.user.first_name}},</h1>
+        <p class="lead">Sizning hisobingiz hali  <b>Aktiv emas</b> <br><br>Sizning akkauntingiz hali aktiv emas chunki biz sizni ustoz ekanligingizni bilmaymiz kirish uchun kanal adminiga murojat qiling !
+          <br>yoki telegramdan <a href="https://t.me/mbin_dev_0071">Suyunov Husan</a> ga yozing tez orada ko'rib chiqiladi va siz o'qituvchi sifatida tizimga kirishga ruxsat olib testlar tuza olasiz. <bold>Unutmang faqat 1 marta hisobingizni aktiv qilsangiz bo'ldi boshqa hech qachon so'ralmaydi.</bold></p>
+        <p class="lead ms-4">Faqat quyidagilarga xabar bersangiz akkauntingizni aktivlashtirib bera oladi.</p>
+        <ul>
+          <li>Dasturchi: Suyunov Husan bog'lanish uchun: <a href="https://t.me/mbin_dev_0071">Suyunov Husan</a></li>
+          <li>Yordamchi: Davlatov Baxtiyor bog'lanish uchun: <a href="https://t.me/IT_Creative">Davlatov Baxtiyor</a> yoki <a href="tel:+998 97 521 66 86">+998 97 521 66 86</a></li>
+        </ul>
+        <hr class="my-4">
+        <p class="lead">
+          <a class="btn btn-danger btn-lg" href="/logout" style="border-radius: 0%;" role="button">Orqaga qaytish</a>
+        </p>
+      </div>
+{% include "exam/footer.html" %}
+  </body>
+</html>

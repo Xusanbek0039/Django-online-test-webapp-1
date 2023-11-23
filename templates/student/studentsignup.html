@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+
+        form{
+           margin: 50px; 
+          
+        }
+
+    </style>
+  </head>
+  <body>
+    {% include "exam/navbar.html" %}
+ 
+
+
+<br><br><br>
+<div class="container">
+  <h3 style="text-align: center;">O'quvchilar uchun ro'yxatdan o'tish</h3>
+<form method="POST" autocomplete="off" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="first_name">Ismi</label>
+          {% render_field userForm.first_name|attr:'required:true'  class="form-control" placeholder="Ism" %}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="last_name">Familiya</label>
+          {% render_field userForm.last_name|attr:'required:true'  class="form-control" placeholder="Familiya" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="mobile">Telefon raqam</label>
+          {% render_field studentForm.mobile|attr:'required:true'  class="form-control" placeholder="Telefon raqami" %}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="address">Manzil</label>
+          {% render_field studentForm.address|attr:'required:true'  class="form-control" placeholder="Manzil" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="username">Username</label>
+          {% render_field userForm.username|attr:'required:true'  class="form-control" placeholder="Foydalanuvchi nomi masalan: Xusanbek" %}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Parol</label>
+          {% render_field userForm.password|attr:'required:true'  class="form-control" placeholder="Parol masalan: Xusanbek0071" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="profile_pic">Profilingizga rasm qo'yish</label>
+          {% render_field studentForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
+        </div>
+        
+      </div>
+
+
+    <button type="submit" class="btn btn-success" style="border-radius: 0%;">Ro'yxatdan o'tish</button>
+  </form>
+</div>
+
+
+<br><br>
+{% include "exam/footer.html" %}
+  </body>
+</html>

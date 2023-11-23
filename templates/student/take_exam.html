@@ -1,0 +1,52 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</head>
+<br><br>
+<div class="container my-4">
+    <div class="jumbotron">
+
+        <div class="row">
+
+            <div class="card border-info mx-4 my-4">
+                <div class="card-body text-default">
+
+                    <h4 class="card-title">Yo'nalish haqida :</h4>
+                    <p class="card-text">
+                        </p><ul style="list-style:decimal;">
+                            <li>Fan nomi : {{course.course_name}}</li>
+                            <li>Jami savollar : {{total_questions}} ta</li>
+                            <li>Maksimal ball : {{total_marks}} ball</li>
+                        </ul>
+                    <p></p>
+
+
+
+                    <h4 class="card-title">Qoidalar :</h4>
+                    <p class="card-text">
+                        </p><ul style="list-style:decimal;">
+                            <li>Xamma savollar testlardan iborat</li>
+                            <li><span class="text-danger">Variantlardan faqat bittasini tanlashingiz mumkin</span></li>
+                            <li>Xar bir savol alohida ball beradi</li>
+                            <li>Agar siz test paytida saytni yangilasangiz yoki oldingi sahifaga o'tishga xarakat qilsangiz bu sizning natijangizga ta'sir qiladi va yana test boshidan boshlanadi. <small style="color: red;">(qisqasi g'irromlik qila olmaysiz)</small></li>
+                            <li>Agar sizning test natijangiz boshqalarniki bilan bir xil bo'lsa admin ga ko'chirganligingiz haqidagi ma'lumot yuboriladi va shunda admin sizni chiqarib yuborishi mumkin <small style="color: red;">(extiyot bo'ling !)</small></li>
+                        </ul>
+                    <p></p>
+                    <a href="{% url 'start-exam' course.id  %}" class="btn btn-success" style="border-radius:0px;">Testga kirish</a>
+                </div>  
+                <div class="card-footer">Omad tilayman {{ request.user.first_name.title }} !</div>
+            </div>  
+        </div>  
+
+    </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'exam/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  a:link {
+        text-decoration: none;
+      }
+    
+  </style>
+</head>
+<h2 style="text-align:center;">Savol qo'shish</h2>
+<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
+    {%csrf_token%}
+    <div class="form-group">
+        <label for="question">1-QADAM <br> Ushbu savol qaysi fan uchunligini tanlang</label>
+      {% render_field questionForm.courseID|attr:'required:true' class="form-control"  %}
+        <br>
+
+      <label for="question">2-QADAM <br> Savolni kiriting</label>
+      {% render_field questionForm.question|attr:'required:true' class="form-control" placeholder="Masalan: Pythonni kim ishlab chiqgan?" %}
+        <br>
+      
+      <label for="question_number">Ushbu savolga o'quvchi to'g'ri javob bersa necha ball berilsin <small style="color: red;"></small></label>
+      {% render_field questionForm.marks|attr:'required:true' class="form-control" placeholder="Masalan: 5" %}
+        <br>
+      <label for="option1">A javobda</label>
+      {% render_field questionForm.option1|attr:'required:true' class="form-control" placeholder="Masalan: Stiv-Jobs" %}
+        <br>
+      <label for="option2">B javobda</label>
+      {% render_field questionForm.option2|attr:'required:true' class="form-control" placeholder="Masalan: Bill Gets" %}
+        <br>
+      <label for="option3">C javobda</label>
+      {% render_field questionForm.option3|attr:'required:true' class="form-control" placeholder="Masalan: Gvido-Van Rassum" %}
+        <br>
+      <label for="option4">D javobda</label>
+      {% render_field questionForm.option4|attr:'required:true' class="form-control" placeholder="Mark Sukerberg" %}
+        <br>
+      <label for="answer">To'g'ri javobni tanlang ! <small style="color: red;">Agar (A javob to'g'ri bo'lsa Option1 ni tanlang) (B bo'lsa Option2), (C javob to'g'ri bo'lsa Option3), (D javob to'g'ri bo'sa Option4) ni tanlang</small></label>
+      {% render_field questionForm.answer|attr:'required:true' class="form-control" %}
+    </div>
+    
+
+    <button type="submit" class="btn btn-success" style="border-radius:0px;">Savolni saqlash</button>
+  </form>
+<br><br><br>
+{% endblock content %}
