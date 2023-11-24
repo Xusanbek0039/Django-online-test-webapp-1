@@ -17,11 +17,11 @@
     
   </style>
 </head>
-<h2 style="text-align:center;">Online test qo'shish</h2>
+<h2 style="text-align:center;">Yo'nalish qo'shish</h2>
 <form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;">
     {%csrf_token%}
     <div class="form-group">
-      <label for="course_name">Test nomi </label>
+      <label for="course_name">Yo'nalish nomi </label>
       {% render_field courseForm.course_name class="form-control" placeholder="Masalan: Python darsligidan " %}
 
       <label for="question_number">Jami savollar soni</label>
