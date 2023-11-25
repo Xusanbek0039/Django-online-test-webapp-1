@@ -1,5 +1,14 @@
 from pathlib import Path
 import os
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
+STATIC_DIR=os.path.join(BASE_DIR,'static')
+MEDIA_ROOT=os.path.join(BASE_DIR,'static/profile_pic/')
+MEDIA_URL = os.path.join(BASE_DIR, 'static/profile_pic/')
+
 from environs import Env
 
 
@@ -7,14 +16,14 @@ env = Env()
 env.read_env()
 
 SECRET_KEY = env("SECRET_KEY")
-
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# yuklangan applar
+# Application definition
+
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
@@ -22,7 +31,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic', # yangi
     'django.contrib.staticfiles',
     'exam',
     'teacher',
@@ -34,22 +42,20 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # yangi qator staticfile uchun deployda ishlashi uchun 
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 CSRF_COOKIE_SECURE=False
 ROOT_URLCONF = 'onlinexam.urls'
-
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [str(BASE_DIR.joinpath('templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,6 +70,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'onlinexam.wsgi.application'
 
+
+# Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 # Database bu default holati
 # DATABASES = {
@@ -81,8 +90,8 @@ DATABASES = {
 }
 
 
-# Password tekshiruvi
-
+# Password validation
+# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -100,41 +109,26 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Xalqarolashtirish joylashuv haqida
+# Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'uz'
+LANGUAGE_CODE = 'uz-uz'
 
-TIME_ZONE = 'Asia/Tashkent'
+TIME_ZONE = 'Asia/Samarkand'
 
 USE_I18N = True
 
 USE_L10N = True
 
-
-
-# static uchun yo'l
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
-STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage' # new
+
 LOGIN_REDIRECT_URL='/afterlogin'
 LOGOUT_REDIRECT_URL = '/'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
-CKEDITOR_UPLOAD_PATH = "uploads/"
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-
-
-DEFAULT_FROM_EMAIL = 'your_custom_email_account'
-EMAIL_HOST = 'smtp'
-EMAIL_HOST_USER = 'username'
-EMAIL_HOST_PASSWORD = 'password'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
